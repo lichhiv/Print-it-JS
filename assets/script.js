@@ -17,15 +17,6 @@ const slides = [
 	}
 ]
 
-// ... creation du tableaux...
-
-const slides = [
-	{
-		"image": "slide1.jpg",
-		"tagLine": "Impressions tous formats <span>en boutique et en ligne</span>"
-	},
-	// ... autres images ...
-]
 // ...selection elements de la page ...
 
 const bannerImg = document.querySelector('.banner-img');  // L'image
@@ -39,21 +30,21 @@ let currentSlideIndex = 0;  // Commence à 0 (première image)
 //...Quand on clique sur une flèche ...
 // Pour la flèche gauche
 prevButton.addEventListener('click', () => {
-	console.log('Bouton précédent cliqué');
+	console.log('%c⬅️ Bouton GAUCHE cliqué', 'color: blue; font-weight: bold;');
 	currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
 	updateCarousel();
 });
 
 // Pour la flèche droite
 nextButton.addEventListener('click', () => {
-	console.log('Bouton suivant cliqué');
+	console.log('%c➡️ Bouton DROITE cliqué', 'color: green; font-weight: bold;');
 	currentSlideIndex = (currentSlideIndex + 1) % slides.length;
 	updateCarousel();
 });
 
 //..La fonction updateCarousel ...
 function updateCarousel() {
-	console.log(`Mise à jour du carrousel - Diapositive ${currentSlideIndex + 1}/${slides.length}`);
+	console.log(`%c🔄 Diapositive ${currentSlideIndex + 1}/${slides.length}`, 'color: purple; font-weight: bold;');
 	bannerImg.src = `./assets/images/slideshow/${slides[currentSlideIndex].image}`;
 	bannerText.innerHTML = slides[currentSlideIndex].tagLine;
 }
