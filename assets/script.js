@@ -21,8 +21,8 @@ const slides = [
 
 const bannerImg = document.querySelector('.banner-img');  // L'image
 const bannerText = document.querySelector('#banner p');   // Le texte
-const prevButton = document.querySelector('.carousel-button.prev');  // Flèche gauche
-const nextButton = document.querySelector('.carousel-button.next');  // Flèche droite
+const prevButton = document.querySelector('.arrow_left');  // Flèche gauche
+const nextButton = document.querySelector('.arrow_right');  // Flèche droite
 const dotsContainer = document.querySelector('.dots');  // Container des bullet points
 
 // ... On garde en mémoire quelle image on montre ...
