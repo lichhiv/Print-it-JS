@@ -30,10 +30,17 @@ let currentSlideIndex = 0;  // Commence à 0 (première image)
 
 // Création des bullet points
 function createDots() {
+	// Supprimer les points existants s'il y en a
+	dotsContainer.innerHTML = '';
+
 	for (let i = 0; i < slides.length; i++) {
 		const dot = document.createElement('div');
 		dot.classList.add('dot');
-		if (i === 0) dot.classList.add('dot_selected');
+		// Le premier point (index 0) est sélectionné par défaut
+		if (i === 0) {
+			dot.classList.add('dot_selected');
+		}
+		// Ajouter l'événement de clic
 		dot.addEventListener('click', () => {
 			currentSlideIndex = i;
 			updateCarousel();
