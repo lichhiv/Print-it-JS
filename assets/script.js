@@ -64,21 +64,25 @@ function updateDots() {
 //...Quand on clique sur une flèche ...
 // Pour la flèche gauche
 prevButton.addEventListener('click', () => {
-	console.log('%c⬅️ Bouton GAUCHE cliqué', 'color: blue; font-weight: bold;');
+	console.log('Bouton GAUCHE cliqué');
+	const oldIndex = currentSlideIndex;
 	currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+	console.log(`Passage de l'image ${oldIndex + 1} à l'image ${currentSlideIndex + 1}`);
 	updateCarousel();
 });
 
 // Pour la flèche droite
 nextButton.addEventListener('click', () => {
-	console.log('%c➡️ Bouton DROITE cliqué', 'color: green; font-weight: bold;');
+	console.log('Bouton DROITE cliqué');
+	const oldIndex = currentSlideIndex;
 	currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+	console.log(`Passage de l'image ${oldIndex + 1} à l'image ${currentSlideIndex + 1}`);
 	updateCarousel();
 });
 
 //..La fonction updateCarousel ...
 function updateCarousel() {
-	console.log(`%c🔄 Diapositive ${currentSlideIndex + 1}/${slides.length}`, 'color: purple; font-weight: bold;');
+	console.log(`Image actuelle : ${currentSlideIndex + 1} sur ${slides.length}`);
 	bannerImg.src = `./assets/images/slideshow/${slides[currentSlideIndex].image}`;
 	bannerText.innerHTML = slides[currentSlideIndex].tagLine;
 	updateDots();
