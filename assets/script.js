@@ -23,9 +23,36 @@ const bannerImg = document.querySelector('.banner-img');  // L'image
 const bannerText = document.querySelector('#banner p');   // Le texte
 const prevButton = document.querySelector('.carousel-button.prev');  // Flèche gauche
 const nextButton = document.querySelector('.carousel-button.next');  // Flèche droite
+const dotsContainer = document.querySelector('.dots');  // Container des bullet points
 
 // ... On garde en mémoire quelle image on montre ...
 let currentSlideIndex = 0;  // Commence à 0 (première image)
+
+// Création des bullet points
+function createDots() {
+	for (let i = 0; i < slides.length; i++) {
+		const dot = document.createElement('div');
+		dot.classList.add('dot');
+		if (i === 0) dot.classList.add('dot_selected');
+		dot.addEventListener('click', () => {
+			currentSlideIndex = i;
+			updateCarousel();
+		});
+		dotsContainer.appendChild(dot);
+	}
+}
+
+// Mise à jour des bullet points
+function updateDots() {
+	const dots = document.querySelectorAll('.dot');
+	dots.forEach((dot, index) => {
+		if (index === currentSlideIndex) {
+			dot.classList.add('dot_selected');
+		} else {
+			dot.classList.remove('dot_selected');
+		}
+	});
+}
 
 //...Quand on clique sur une flèche ...
 // Pour la flèche gauche
@@ -47,4 +74,8 @@ function updateCarousel() {
 	console.log(`%c🔄 Diapositive ${currentSlideIndex + 1}/${slides.length}`, 'color: purple; font-weight: bold;');
 	bannerImg.src = `./assets/images/slideshow/${slides[currentSlideIndex].image}`;
 	bannerText.innerHTML = slides[currentSlideIndex].tagLine;
+	updateDots();
 }
+
+// Initialisation des bullet points
+createDots();
